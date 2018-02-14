@@ -113,5 +113,12 @@ function onDisconnect(){
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
+function switchOn() { // send data to Arduino
+	 var data = stringToBytes("1");
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
+function switchOff() { // send data to Arduino
+	 var data = stringToBytes("0");
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
 
-	

@@ -15,6 +15,8 @@
 #include <SoftwareSerial.h>
 #endif
 
+#define LED 2
+
 /*=========================================================================
        -----------------------------------------------------------------------*/
 #define FACTORYRESET_ENABLE         0
@@ -97,7 +99,7 @@ void setup(void)
   }
 
   //Give module a new name
-  ble.println("AT+GAPDEVNAME=LONE"); // named LONE
+  ble.println("AT+GAPDEVNAME=BILL"); // named LONE
 
   // Check response status
   ble.waitForOK();
@@ -107,6 +109,8 @@ void setup(void)
   ble.setMode(BLUEFRUIT_MODE_DATA);
 
   Serial.println(F("******************************"));
+
+  pinMode(LED, OUTPUT);
 }
 
 /**************************************************************************/
@@ -138,6 +142,14 @@ void loop(void)
   {
     int c = ble.read();
     Serial.print((char)c);
+    if ((char)c == '0') {
+      digitalWrite(LED, LOW);
+      Serial.print("Received '0'");
+    }
+    else if ((char)c == '1') {
+      Serial.print("Received '1'");
+      digitalWrite(LED, HIGH);
+    }
   }
   delay(1000);
 }
