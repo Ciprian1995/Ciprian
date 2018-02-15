@@ -16,7 +16,7 @@
 #endif
 
 #define LED 2
-#include <Servo.H> 
+#include <Servo.h> 
 int pos = 0;
 Servo myservo;
 
@@ -181,7 +181,3 @@ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
 
 
 }
-
-
-}
-
