@@ -81,9 +81,42 @@ function onConnect(){
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
 //	 setTimeout(function(){document.location='main.html';}, 3000);
-	 
+	 document.getElementById("control").innerHTML= something;
 }
 
+var something = "
+<center><button id="ledOnButton" onclick = "switchOn()">Set led ON</button> </center>
+  
+		<br><br>
+		<center><button id="ledOffButton" onclick = "switchOff()">Set Led Off</button> </center>
+		<br>
+		<br>
+		<br>
+		<center><h2> Door open </h2></center>
+		<br>
+		<center><button id="doorOpen" onclick = "switchDoor()">Open Door </button> 
+		
+		
+		</center>
+		<br><br>
+		<center><button id="doorOff" onclick = "switchDoorOff()">Close Door</button> </center>
+		<br>
+		<br>
+		<center><h2> Text sending to serial </h2></center>
+		<br>
+		<br>
+		<center><input type="text" id="messageInput" value="Hello"/></center>
+		<br>
+		<br>
+		<center><button id="sendButton" onclick = "sendData()">Send</button></center>
+		<br>
+		<br>
+		<center><div id="sendDiv"></div> </center>
+		<br><br>
+		<center><button id="disconnectButton"onClick="disconnect()">Disconnect</button></center>
+		<div id="receiveDiv"></div>
+		
+		";
 function onConnError(){
 	alert("Problem connecting");
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
