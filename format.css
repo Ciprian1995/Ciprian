@@ -1,5 +1,5 @@
 body{
-	background-color: green;
+	background-color: DodgerBlue;
 }	
 img{
 	width: 100%;	
@@ -27,14 +27,34 @@ img{
 
 /* width will be 100% of content */
 #refreshButton{
-	width: 100%;
+	
+	width: 20%; 
+	
 }
 #sendButton{
-	width: 100%;
+	
+	width: 20%; 
+
 }
 #ledOnButton{
-	width: 100%;
+	
+	width: 20%; 
+	
 }
 #ledOffButton{
-	width: 100%;
+	
+	width: 20%; 
+	
 }
+#doorOpen{
+	
+	width: 20%; 
+	
+}
+#doorOff{
+	
+	width: 20%; 
+	
+}
+
+
