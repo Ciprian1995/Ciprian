@@ -72,7 +72,7 @@ function conn(){
 	//for debug:
 	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1];
 	ble.connect(ConnDeviceId, onConnect, onConnError);
-	alert("Connnection");
+	
  }
  
 function onConnect(){
@@ -81,13 +81,13 @@ function onConnect(){
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
 	 setTimeout(function(){document.location='main.html';}, 3000);
-	 alert("OnConnnection");
+	 
 }
 
 function onConnError(){
 	alert("Problem connecting");
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
-	alert("Connnection Error");
+	
 }
 
  function onData(data){ // data received from Arduino
@@ -110,7 +110,7 @@ function onSend(){
 
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
-	alert("Disconnect");
+	
 }
 
 function onDisconnect(){
