@@ -79,6 +79,7 @@ function onConnect(){
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
+	  <script> setTimeout(function(){document.location='main.html';}, 3000); </script>
 }
 
 function onConnError(){
@@ -109,11 +110,13 @@ function disconnect() {
 
 function onDisconnect(){
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
+	<script> setTimeout(function(){document.location='log.html';}, 3000); </script>
 }
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
 function switchOn() { // send data to Arduino
+     
 	 var data = stringToBytes("1");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
@@ -121,4 +124,6 @@ function switchOff() { // send data to Arduino
 	 var data = stringToBytes("0");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
+
+
 
