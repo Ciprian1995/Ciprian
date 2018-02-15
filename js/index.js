@@ -72,6 +72,7 @@ function conn(){
 	//for debug:
 	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1];
 	ble.connect(ConnDeviceId, onConnect, onConnError);
+	alert("Connnection");
  }
  
 function onConnect(){
@@ -79,16 +80,19 @@ function onConnect(){
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
-	  <script> setTimeout(function(){document.location='main.html';}, 3000); </script>
+	 setTimeout(function(){document.location='main.html';}, 3000);
+	 alert("OnConnnection");
 }
 
 function onConnError(){
 	alert("Problem connecting");
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
+	alert("Connnection Error");
 }
 
  function onData(data){ // data received from Arduino
 	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
+	
 }
 
 function data(txt){
@@ -106,11 +110,12 @@ function onSend(){
 
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
+	alert("Disconnect");
 }
 
 function onDisconnect(){
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
-	<script> setTimeout(function(){document.location='log.html';}, 3000); </script>
+    setTimeout(function(){document.location='log.html';}, 3000);
 }
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert

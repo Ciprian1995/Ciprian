@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -9,30 +8,21 @@
 		<link rel = "stylesheet" type = "text/css" href = "format.css">   <!-- Link to style sheet named format.css -->
 		<script type="text/javascript" src="cordova.js"></script> 
         <script type="text/javascript" src="js/index.js"></script>
-        <title>Smart Office</title>
+        <title>Office app</title>
     </head>
      <body onload="onLoad()">
 
-		<center><h1>Log in menu for Smart Office Application</h1></center>
- 
+		<h1>Office app</h1>
+           
 		<ul id="bleDeviceList"> </ul>  
-		<br>
-		<br>
-		<center><button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
-		<br>
+		<button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
 		<br>
 		<div id="statusDiv">Status: Disconnected</div>
-		<br>
-		<br>
-		<br>
 		<div id="bleId">DeviceId:</div>
-		<br>
 		<div id="debugDiv"></div>
-	
-		<br>
-		<div id="sendDiv"></div>
+		<br><br>
 		<br><br>
 		<button id="disconnectButton"onClick="disconnect()">Disconnect</button>
-		<div id="receiveDiv"></div> </center>
+		<div id="receiveDiv"></div>
     </body>
 </html>
