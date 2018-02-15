@@ -80,7 +80,7 @@ function onConnect(){
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
-	 setTimeout(function(){document.location='main.html';}, 3000);
+//	 setTimeout(function(){document.location='main.html';}, 3000);
 	 
 }
 
