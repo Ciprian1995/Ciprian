@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<link rel = "stylesheet" type = "text/css" href = "format.css">   <!-- Link to style sheet named format.css -->
+		<script type="text/javascript" src="cordova.js"></script> 
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>Smart Office</title>
+    </head>
+     <body onload="onLoad()">
+
+		<center><h1>Log in menu for Smart Office Application</h1></center>
+ 
+		<ul id="bleDeviceList"> </ul>  
+		<br>
+		<br>
+		<center><button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
+		<br>
+		<br>
+		<div id="statusDiv">Status: Disconnected</div>
+		<br>
+		<br>
+		<br>
+		<div id="bleId">DeviceId:</div>
+		<br>
+		<div id="debugDiv"></div>
+	
+		<br>
+		<div id="sendDiv"></div>
+		<br><br>
+		<button id="disconnectButton"onClick="disconnect()">Disconnect</button>
+		<div id="receiveDiv"></div> </center>
+    </body>
+</html>
