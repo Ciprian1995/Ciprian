@@ -12,6 +12,7 @@
 
     <content src="log.html" />
 	
+	
 <plugin name="cordova-plugin-ble-central" spec="1.1.4" />
 
 <preference name="phonegap-version" value="cli-6.5.0" />
