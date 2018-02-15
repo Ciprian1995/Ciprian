@@ -181,3 +181,10 @@ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
 
 
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> bc974fbcb7252f359368a4749c35f2bc079a9ec7
