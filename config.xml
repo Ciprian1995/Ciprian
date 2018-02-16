@@ -10,7 +10,7 @@
 		 https://github.com/don/cordova-plugin-ble-central 
     </author>
 
-    <content src="log.html" />
+    <content src="main.html" />
 	
 	
 <plugin name="cordova-plugin-ble-central" spec="1.1.4" />

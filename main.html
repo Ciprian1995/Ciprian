@@ -16,7 +16,30 @@
 
 		<h1><center>Smart Office Application</center></h1>
            
-		
+		<ul id="bleDeviceList"> </ul>  
+		<br>
+		<br>
+		<center><button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
+		<br>
+		<br>
+		<div id="statusDiv">Status: Disconnected</div>
+		<br>
+		<br>
+		<br>
+		<div id="bleId">DeviceId:</div>
+		<br>
+		<div id="debugDiv"></div>
+	
+		<br>
+		<div id="sendDiv"></div>
+		<br><br>
+		<button id="disconnectButton"onClick="disconnect()">Disconnect</button>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="receiveDiv"></div> </center>
+	<center>	<h2> Turn on lights </h2> </center>
 	 <center><button id="ledOnButton" onclick = "switchOn()">Set led ON</button> </center>
   
 		<br><br>
