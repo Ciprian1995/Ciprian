@@ -115,7 +115,7 @@ function disconnect() {
 
 function onDisconnect(){
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
-    setTimeout(function(){document.location='log.html';}, 3000);
+  //  setTimeout(function(){document.location='log.html';}, 3000);
 }
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
