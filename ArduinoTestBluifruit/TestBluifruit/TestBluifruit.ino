@@ -9,14 +9,12 @@
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BluefruitLE_UART.h"
 #include <Servo.h>
-int pos = 50;
+int pos = 0;
 Servo myservo;
-int ledPin = 2;                // choose the pin for the LED
-int inputPin = 6;               // choose the input pin (for PIR sensor)
+               // choose the pin for the LED
+int inputPin = 5;               // choose the input pin (for PIR sensor)
 int pirState = LOW;             // we start, assuming no motion detected
-int val = 0;
-char d = '0';
-
+int val = 0;   
 
 #include "BluefruitConfig.h"
 
@@ -120,10 +118,9 @@ void setup(void)
   Serial.println(F("******************************"));
 
   pinMode(LED, OUTPUT);
+  pinMode(inputPin, INPUT);
 
   myservo.attach(3);
-  pinMode(ledPin, OUTPUT);      // declare LED as output
-  pinMode(inputPin, INPUT);
 }
 
 /**************************************************************************/
@@ -166,53 +163,45 @@ void loop(void)
       digitalWrite(LED, HIGH);
       //flush
     }
-    if ((char)c == '3')
+    else if ((char)c == '3')
+    
     {
-      for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
+      Serial.print("Received '3'");
+      for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
         // in steps of 1 degree
+        Serial.print(pos);
         myservo.write(pos);              // tell servo to go to position in variable 'pos'
         delay(15);
         //flush
-        Serial.print("Received '3'");
       } // waits 15ms for the servo to reach the position
 
     }
-   if ((char)c == '4')
+    else if ((char)c == '4')
     {
-      for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
+      for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
         myservo.write(pos);              // tell servo to go to position in variable 'pos'
-        Serial.print("Received '4'");
         delay(15);
         //flush
       }// waits 15ms for the servo to reach the position
     }
-    
-  }
-  }
- 
-void test()
-{
 
-  val = digitalRead(inputPin);  // read input value
+  else if ((char)c == '5')
+    {
+      Serial.print(LED);
+     val = digitalRead(inputPin);  // read input value
   if (val == HIGH) {            // check if the input is HIGH
-    digitalWrite(ledPin, HIGH);  // turn LED ON
+    digitalWrite(LED, HIGH);  // turn LED ON
     if (pirState == LOW) {
       // we have just turned on
       Serial.println("Motion detected!");
       // We only want to print on the output change, not state
       pirState = HIGH;
     }
-  } else {
-    digitalWrite(ledPin, LOW); // turn LED OFF
-    if (pirState == HIGH) {
-      // we have just turned of
-      Serial.println("Motion ended!");
-      // We only want to print on the output change, not state
-      pirState = LOW;
-    }
+  
   }
-
-
+    }
+  
+  }
 }
 
 
