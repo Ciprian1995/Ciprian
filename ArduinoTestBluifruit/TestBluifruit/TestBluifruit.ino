@@ -197,7 +197,7 @@ void loop(void)
     }
 
     }
-
+    }
     if ((char)c == '7')
     {
 

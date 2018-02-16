@@ -94,10 +94,6 @@ function onConnError(){
 	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
 	
 }
-function onData(data2){ // data received from Arduino
-	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data2) + "<br/>";
-	
-}
 
 function data(txt){
 	messageInput.value = txt;
@@ -145,14 +141,14 @@ function doorOff() { // send data to Arduino
 }
 function pirOn() { // send data to Arduino
      
-	 var data2 = stringToBytes("6");
+	 var data = stringToBytes("5");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
 function pirOff() { // send data to Arduino
      
-	// var data = stringToBytes("6");
-	 var data2 = stringToBytes("6");
-	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, data2, onSend, onError);
+	 var data = stringToBytes("6");
+
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
 
 
