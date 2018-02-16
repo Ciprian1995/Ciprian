@@ -54,19 +54,20 @@
 		
 		</center>
 		<br><br>
-		<center><button id="doorOff" onclick = "switchDoorOff()">Close Door</button> </center>
+		<center><button id="doorOff" onclick = "doorOff()">Close Door</button> </center>
 		<br>
 		<br>
-		<center><h2> Text sending to serial </h2></center>
+		<h2> Turn on the PIR sensor </h2>
+		<br>
+		<center><button id="doorOpen" onclick = "pirOn()">Open Pir </button> 
+		
+		</center>
+		<br><br>
+		<center><button id="doorOff" onclick = "pirOff()">Close Pir</button> </center>
+		
 		<br>
 		<br>
-		<center><input type="text" id="messageInput" value="Hello"/></center>
-		<br>
-		<br>
-		<center><button id="sendButton" onclick = "sendData()">Send</button></center>
-		<br>
-		<br>
-		<center><div id="sendDiv"></div> </center>
+		
 		<br><br>
 		<center><button id="disconnectButton"onClick="disconnect()">Disconnect</button></center>
 			
