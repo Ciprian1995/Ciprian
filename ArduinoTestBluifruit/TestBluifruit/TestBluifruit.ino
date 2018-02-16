@@ -8,6 +8,9 @@
 #include "Adafruit_BLE.h"
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BluefruitLE_UART.h"
+#include <Servo.h> 
+int pos = 0;
+Servo myservo;
 
 #include "BluefruitConfig.h"
 
@@ -16,19 +19,7 @@
 #endif
 
 #define LED 2
-<<<<<<< HEAD
-=======
 
-=======
-#include <Servo.h> 
-int pos = 0;
-Servo myservo;
-<<<<<<< HEAD
-=======
->>>>>>> c16650f1bac0cf349f7473c09cbfefdfe7bc526a
->>>>>>> 3ff3f94cec03c61ce8fd07f511b2439cc1906149
-
->>>>>>> 5b52f9d6bb2a9bb64d89a975bd28d52a1395ad2e
 /*=========================================================================
        -----------------------------------------------------------------------*/
 #define FACTORYRESET_ENABLE         0
@@ -168,11 +159,7 @@ void loop(void)
   sweep();
   delay(1000);
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 3ff3f94cec03c61ce8fd07f511b2439cc1906149
+
 
 void sweep()
 {
@@ -191,15 +178,9 @@ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(15); 
   }// waits 15ms for the servo to reach the position
-<<<<<<< HEAD
-  //GG
 
 }
-
-=======
   
 
 }
 
->>>>>>> c16650f1bac0cf349f7473c09cbfefdfe7bc526a
->>>>>>> 3ff3f94cec03c61ce8fd07f511b2439cc1906149
