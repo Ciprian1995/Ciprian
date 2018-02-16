@@ -166,65 +166,30 @@ void loop(void)
       digitalWrite(LED, HIGH);
       //flush
     }
-    else if ((char)c == '3')
+    if ((char)c == '3')
     {
       for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
         // in steps of 1 degree
         myservo.write(pos);              // tell servo to go to position in variable 'pos'
         delay(15);
         //flush
+        Serial.print("Received '3'");
       } // waits 15ms for the servo to reach the position
 
     }
-    else if ((char)c == '4')
+   if ((char)c == '4')
     {
       for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
         myservo.write(pos);              // tell servo to go to position in variable 'pos'
+        Serial.print("Received '4'");
         delay(15);
         //flush
       }// waits 15ms for the servo to reach the position
     }
-    else if ((char)d == '5')
-    {
-    val = digitalRead(inputPin);  // read input value
-  if (val == HIGH) {            // check if the input is HIGH
-    digitalWrite(ledPin, HIGH);  // turn LED ON
-    if (pirState == LOW) {
-      // we have just turned on
-      Serial.println("Motion detected!");
-      // We only want to print on the output change, not state
-      pirState = HIGH;
-    }
-
-    }
-    }
-    if ((char)c == '6')
-    {
-
-    }
-
-val = digitalRead(inputPin);  // read input value
-  if (val == HIGH) {            // check if the input is HIGH
-    digitalWrite(ledPin, HIGH);  // turn LED ON
-    if (pirState == LOW) {
-      // we have just turned on
-      Serial.println("Motion detected!");
-      // We only want to print on the output change, not state
-      pirState = HIGH;
-    }
-  } else {
-    digitalWrite(ledPin, LOW); // turn LED OFF
-    if (pirState == HIGH){
-      // we have just turned of
-      Serial.println("Motion ended!");
-      // We only want to print on the output change, not state
-      pirState = LOW;
-    }
+    
   }
   }
-  
-
-}
+ 
 void test()
 {
 
