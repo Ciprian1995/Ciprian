@@ -184,7 +184,7 @@ void loop(void)
         //flush
       }// waits 15ms for the servo to reach the position
     }
-    else if ((char)d == '6')
+    else if ((char)d == '5')
     {
     val = digitalRead(inputPin);  // read input value
   if (val == HIGH) {            // check if the input is HIGH
@@ -198,7 +198,7 @@ void loop(void)
 
     }
     }
-    if ((char)c == '7')
+    if ((char)c == '6')
     {
 
     }
