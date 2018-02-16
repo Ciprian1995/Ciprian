@@ -11,6 +11,12 @@
 #include <Servo.h>
 int pos = 50;
 Servo myservo;
+int ledPin = 2;                // choose the pin for the LED
+int inputPin = 6;               // choose the input pin (for PIR sensor)
+int pirState = LOW;             // we start, assuming no motion detected
+int val = 0;   
+
+int c = -1;
 
 #include "BluefruitConfig.h"
 
@@ -116,6 +122,8 @@ void setup(void)
   pinMode(LED, OUTPUT);
 
   myservo.attach(3);
+  pinMode(ledPin, OUTPUT);      // declare LED as output
+  pinMode(inputPin, INPUT);
 }
 
 /**************************************************************************/
@@ -177,26 +185,25 @@ void loop(void)
       }// waits 15ms for the servo to reach the position
     }
   }
+  sweep();
 }
 
 void sweep()
 {
-  /* int test = ble.read();
-    Serial.print((char)test);
-    if ((char)test == '3')
-    {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-       // in steps of 1 degree
-       myservo.write(pos);              // tell servo to go to position in variable 'pos'
-       delay(15);
-     } // waits 15ms for the servo to reach the position
-
+  
+  if ((char)c == '5')
+ {
+ val = digitalRead(inputPin);  // read input value
+  if (val == HIGH) {            // check if the input is HIGH
+    digitalWrite(ledPin, HIGH);  // turn LED ON
+    if (pirState == LOW) {
+      // we have just turned on
+      Serial.println("Motion detected!");
+      // We only want to print on the output change, not state
+      pirState = HIGH;
     }
-    for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-     myservo.write(pos);              // tell servo to go to position in variable 'pos'
-     delay(15);
-    }// waits 15ms for the servo to reach the position
-  */
+  }
+}
 }
 
 
