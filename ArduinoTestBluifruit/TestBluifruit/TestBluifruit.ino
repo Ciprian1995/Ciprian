@@ -156,7 +156,7 @@ void loop(void)
       digitalWrite(LED, HIGH);
     }
   }
-  sweep();
+ // sweep();
   delay(1000);
 }
 
