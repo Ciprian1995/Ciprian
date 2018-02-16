@@ -1,46 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel = "stylesheet" type = "text/css" href = "forG.css">
-<link rel = "stylesheet" type = "text/css" href = "format.css">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<link rel = "stylesheet" type = "text/css" href = "format.css">   <!-- Link to style sheet named format.css -->
+		<link rel = "stylesheet" type = "text/css" href = "pop.css">
+		<script type="text/javascript" src="cordova.js"></script> 
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>Smart Office</title>
+    </head>
+     <body onload="onLoad()">
 
-
-<style>
-
-</style>
-
-</head>
-<body onload="myFunction()" style="margin:0;">
-
-<div id="loader"></div>
-
-
-<br>
-<br>
-<div style="display:none;" id="myDiv" class="animate-bottom">
-
- <script> setTimeout(function(){document.location='log.html';}, 3000); 
- 
- </script>
-
+		<h1><center>Smart Office Application</center></h1>
+           
+		<ul id="bleDeviceList"> </ul>  
+		<br>
+		<br>
+		<center><button id="refreshButton" onClick = "refreshDeviceList()">Refresh</button>
+		<br>
+		<br>
+		<div id="statusDiv">Status: Disconnected</div>
+		<br>
+		<br>
+		<br>
+		<div id="bleId">DeviceId:</div>
+		<br>
+		<div id="debugDiv"></div>
+	
+		<br>
+		<div id="sendDiv"></div>
+		<br><br>
+		<button id="disconnectButton"onClick="disconnect()">Disconnect</button>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div id="receiveDiv"></div> </center>
+	<center>	<h2> Turn on lights </h2> </center>
+	 <center><button id="ledOnButton" onclick = "switchOn()">Set led ON</button> </center>
+  
+		<br><br>
+		<center><button id="ledOffButton" onclick = "switchOff()">Set Led Off</button> </center>
+		<br>
+		<br>
+		<br>
+		<center><h2> Door open </h2></center>
+		<br>
+		<center><button id="doorOpen" onclick = "doorOn()">Open Door </button> 
+		
+		
+		</center>
+		<br><br>
+		<center><button id="doorOff" onclick = "switchDoorOff()">Close Door</button> </center>
+		<br>
+		<br>
+		<center><h2> Text sending to serial </h2></center>
+		<br>
+		<br>
+		<center><input type="text" id="messageInput" value="Hello"/></center>
+		<br>
+		<br>
+		<center><button id="sendButton" onclick = "sendData()">Send</button></center>
+		<br>
+		<br>
+		<center><div id="sendDiv"></div> </center>
+		<br><br>
+		<center><button id="disconnectButton"onClick="disconnect()">Disconnect</button></center>
+			
 </div>
 
-<script>
-var myVar;
 
-function myFunction() {
-    myVar = setTimeout(showPage, 3000);
-}
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "none";
-
-}
-
-
-</script>
-
-</body>
+</div>
+    </body>
 </html>
+			
+
