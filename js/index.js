@@ -134,6 +134,12 @@ function doorOn() { // send data to Arduino
 	 var data = stringToBytes("3");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
+function doorOff() { // send data to Arduino
+     
+	 var data = stringToBytes("3");
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
+
 
 
 
