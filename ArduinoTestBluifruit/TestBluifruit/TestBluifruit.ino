@@ -14,9 +14,8 @@ Servo myservo;
 int ledPin = 2;                // choose the pin for the LED
 int inputPin = 6;               // choose the input pin (for PIR sensor)
 int pirState = LOW;             // we start, assuming no motion detected
-int val = 0;   
+int val = 0;
 
-int c = -1;
 
 #include "BluefruitConfig.h"
 
@@ -184,16 +183,19 @@ void loop(void)
         //flush
       }// waits 15ms for the servo to reach the position
     }
-  }
-  sweep();
-}
-
-void sweep()
-{
-  
-  if ((char)c == '5')
- {
- val = digitalRead(inputPin);  // read input value
+    else if ((char)c == '5')
+    {
+      val = digitalRead(inputPin);  // read input value
+  if (val == HIGH) {            // check if the input is HIGH
+    digitalWrite(ledPin, HIGH);  // turn LED ON
+    if (pirState == LOW) {
+      // we have just turned on
+      Serial.println("Motion detected!");
+      // We only want to print on the output change, not state
+      pirState = HIGH;
+      while(c >= 5)
+      {
+        val = digitalRead(inputPin);  // read input value
   if (val == HIGH) {            // check if the input is HIGH
     digitalWrite(ledPin, HIGH);  // turn LED ON
     if (pirState == LOW) {
@@ -202,9 +204,67 @@ void sweep()
       // We only want to print on the output change, not state
       pirState = HIGH;
     }
+  } else {
+    digitalWrite(ledPin, LOW); // turn LED OFF
+    if (pirState == HIGH){
+      // we have just turned of
+      Serial.println("Motion ended!");
+      // We only want to print on the output change, not state
+      pirState = LOW;
+    }
   }
-}
-}
+      }
+    }
+  } else {
+    digitalWrite(ledPin, LOW); // turn LED OFF
+    if (pirState == HIGH){
+      // we have just turned of
+      Serial.println("Motion ended!");
+      // We only want to print on the output change, not state
+      pirState = LOW;
+    }
+  }
+
+      }
+      if ((char)c == '6')
+      {
+        digitalWrite(ledPin, LOW); // turn LED OFF
+        if (pirState == HIGH) {
+          // we have just turned of
+          Serial.println("Motion ended!");
+          // We only want to print on the output change, not state
+          pirState = LOW;
+        }
+      }
+    }
+
+  }
+  void test()
+  {
+
+    val = digitalRead(inputPin);  // read input value
+    if (val == HIGH) {            // check if the input is HIGH
+      digitalWrite(ledPin, HIGH);  // turn LED ON
+      if (pirState == LOW) {
+        // we have just turned on
+        Serial.println("Motion detected!");
+        // We only want to print on the output change, not state
+        pirState = HIGH;
+      }
+    } else {
+      digitalWrite(ledPin, LOW); // turn LED OFF
+      if (pirState == HIGH) {
+        // we have just turned of
+        Serial.println("Motion ended!");
+        // We only want to print on the output change, not state
+        pirState = LOW;
+      }
+    }
+
+
+  }
+
+
 
 
 
