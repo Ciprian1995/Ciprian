@@ -164,7 +164,7 @@ void loop(void)
 void sweep()
 {
   int test = ble.read();
-  Serial.print((char)c);
+  Serial.print((char)test);
   if((char)test == '3')
   {
 for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
@@ -182,5 +182,5 @@ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
 }
   
 
-}
+
 
