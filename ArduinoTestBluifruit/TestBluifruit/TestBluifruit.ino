@@ -16,7 +16,16 @@
 #endif
 
 #define LED 2
+<<<<<<< HEAD
+=======
 
+=======
+#include <Servo.h> 
+int pos = 0;
+Servo myservo;
+>>>>>>> c16650f1bac0cf349f7473c09cbfefdfe7bc526a
+
+>>>>>>> 5b52f9d6bb2a9bb64d89a975bd28d52a1395ad2e
 /*=========================================================================
        -----------------------------------------------------------------------*/
 #define FACTORYRESET_ENABLE         0
@@ -153,3 +162,28 @@ void loop(void)
   }
   delay(1000);
 }
+<<<<<<< HEAD
+=======
+
+void sweep()
+{
+  int test = ble.read();
+  Serial.print((char)c);
+  if((char)test == '3')
+  {
+for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);  
+} // waits 15ms for the servo to reach the position
+  
+  }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15); 
+  }// waits 15ms for the servo to reach the position
+  
+
+}
+
+>>>>>>> c16650f1bac0cf349f7473c09cbfefdfe7bc526a
