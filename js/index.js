@@ -40,7 +40,6 @@ function onLoad(){
 function onDeviceReady(){
 	refreshDeviceList();
 }
-
 	 
 function refreshDeviceList(){
 	//deviceList =[];
@@ -64,9 +63,7 @@ function onDiscoverDevice(device){
 	}
 }
 
-
 function conn(){
-	
 	var  deviceTouch= event.srcElement.innerHTML;
 	document.getElementById("debugDiv").innerHTML =""; // empty debugDiv
 	var deviceTouchArr = deviceTouch.split(",");
@@ -74,7 +71,6 @@ function conn(){
 	//for debug:
 	document.getElementById("debugDiv").innerHTML += "<br>"+deviceTouchArr[0]+"<br>"+deviceTouchArr[1];
 	ble.connect(ConnDeviceId, onConnect, onConnError);
-	
  }
  
 function onConnect(){
@@ -82,19 +78,15 @@ function onConnect(){
 	document.getElementById("bleId").innerHTML = ConnDeviceId;
 	ble.startNotification(ConnDeviceId, blue.serviceUUID, blue.rxCharacteristic, onData, onError);
 	 // ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, app.onData, app.onError);
-     
-
 }
 
 function onConnError(){
 	alert("Problem connecting");
 	document.getElementById("statusDiv").innerHTML = " Status: Disonnected";
-	
 }
 
  function onData(data){ // data received from Arduino
 	document.getElementById("receiveDiv").innerHTML =  "Received: " + bytesToString(data) + "<br/>";
-	
 }
 
 function data(txt){
@@ -112,43 +104,44 @@ function onSend(){
 
 function disconnect() {
 	ble.disconnect(deviceId, onDisconnect, onError);
-	
 }
 
 function onDisconnect(){
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
   //  setTimeout(function(){document.location='log.html';}, 3000);
 }
+
 function onError(reason)  {
 	alert("ERROR: " + reason); // real apps should use notification.alert
 }
+
 function switchOn() { // send data to Arduino
-     
-	 var data = stringToBytes("1");
+	var data = stringToBytes("1");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
+
 function switchOff() { // send data to Arduino
-	 var data = stringToBytes("0");
+	var data = stringToBytes("0");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
-function doorOn() { // send data to Arduino
-     
-	 var data = stringToBytes("3");
+
+function winOn() { // send data to Arduino
+	var data = stringToBytes("3");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
-function doorOff() { // send data to Arduino
-     
-	 var data = stringToBytes("4");
+
+function winOff() { // send data to Arduino
+	var data = stringToBytes("4");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
-function pirOn() { // send data to Arduino
-     
-	 var data = stringToBytes("5");
+
+function pirOn() { // send data to Arduino 
+	var data = stringToBytes("5");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
+
 function pirOff() { // send data to Arduino
-     
-	 var data = stringToBytes("6");
+	var data = stringToBytes("6");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
 

@@ -142,40 +142,41 @@ void loop(void)
   }
   if (ble.available()) {
     Serial.print("* "); Serial.print(ble.available()); Serial.println(F(" bytes available from BTLE"));
-  }
-  // Echo received data
-  while ( ble.available() )
-  {
-    c = ble.read();
-    Serial.print((char)c);
-    if ((char)c == '0') {
-      digitalWrite(LED, LOW);
-      Serial.print("Received '0'");
-      //flush
-    }
-    else if ((char)c == '1') {
-      Serial.print("Received '1'");
-      digitalWrite(LED, HIGH);
-      //flush
-    }
-   else if ((char)c == '3')
-  {
-    for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
-      myservo.write(pos);              // tell servo to go to position in variable 'pos'
-      delay(15);
-      //flush
-    } // waits 15ms for the servo to reach the position
 
-  }
-  else if ((char)c == '4')
-  {
-    for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
-      myservo.write(pos);              // tell servo to go to position in variable 'pos'
-      delay(15);
-      //flush
-    }// waits 15ms for the servo to reach the position
-  }
+    // Echo received data
+    while ( ble.available() )
+    {
+      c = ble.read();
+      Serial.print((char)c);
+      if ((char)c == '0') {
+        digitalWrite(LED, LOW);
+        Serial.print("Received '0'");
+        //flush
+      }
+      else if ((char)c == '1') {
+        Serial.print("Received '1'");
+        digitalWrite(LED, HIGH);
+        //flush
+      }
+      else if ((char)c == '3')
+      {
+        for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
+          // in steps of 1 degree
+          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);
+          //flush
+        } // waits 15ms for the servo to reach the position
+
+      }
+      else if ((char)c == '4')
+      {
+        for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
+          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);
+          //flush
+        }// waits 15ms for the servo to reach the position
+      }
+    }
   }
 }
 
