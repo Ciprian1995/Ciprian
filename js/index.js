@@ -103,10 +103,10 @@ function onSend(){
 }
 
 function disconnect(){
-	if (device.id == "F1:A4:8D:46:02:10") {
+	
 	ble.disconnect(deviceId, onDisconnect, onError);
 	document.getElementById("statusDiv").innerHTML = "Status: Disconnected";
-	}
+	
 }
 
 function onDisconnect(){
