@@ -11,6 +11,9 @@
 #include <Servo.h>
 int pos = 50;
 Servo myservo;
+boolean PIR_on = false;
+int pirState = LOW;             // we start, assuming no motion detected
+int val = 0;                    // variable for reading the pin status
 
 #include "BluefruitConfig.h"
 
@@ -19,6 +22,7 @@ Servo myservo;
 #endif
 
 #define LED 2
+#define PIR 5
 
 /*=========================================================================
        -----------------------------------------------------------------------*/
@@ -114,6 +118,7 @@ void setup(void)
   Serial.println(F("******************************"));
 
   pinMode(LED, OUTPUT);
+  pinMode(PIR, INPUT);
 
   myservo.attach(3);
 }
@@ -148,16 +153,19 @@ void loop(void)
     {
       c = ble.read();
       Serial.print((char)c);
+      // Switch off lights
       if ((char)c == '0') {
         digitalWrite(LED, LOW);
         Serial.print("Received '0'");
         //flush
       }
+      // Switch on lights
       else if ((char)c == '1') {
         Serial.print("Received '1'");
         digitalWrite(LED, HIGH);
         //flush
       }
+      // Open window
       else if ((char)c == '3')
       {
         for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
@@ -168,6 +176,7 @@ void loop(void)
         } // waits 15ms for the servo to reach the position
 
       }
+      // close window
       else if ((char)c == '4')
       {
         for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
@@ -176,8 +185,40 @@ void loop(void)
           //flush
         }// waits 15ms for the servo to reach the position
       }
-    }
-  }
+
+      // Turn on PIR
+      else if ((char)c == '5')
+      {
+        PIR_on = true;
+        val = digitalRead(PIR);  // read input value
+        if (val == HIGH) {            // check if the input is HIGH
+          digitalWrite(LED, HIGH);  // turn LED ON
+          if (pirState == LOW) {
+            // we have just turned on
+            Serial.println("Motion detected!");
+            // We only want to print on the output change, not state
+            pirState = HIGH;
+          }
+        }
+          // Turn off PIR
+          else if ((char) c == '6')
+          {
+            PIR_on = false;
+            digitalWrite(LED, LOW); // turn LED OFF
+            if (pirState == HIGH) {
+              // we have just turned of
+              Serial.println("Motion ended!");
+              // We only want to print on the output change, not state
+              pirState = LOW;
+            }
+          }
+            if (PIR_on == true)
+            {
+
+            }
+          }
+        }
+      }
 }
 
 
