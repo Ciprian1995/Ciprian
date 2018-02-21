@@ -102,7 +102,7 @@ function onSend(){
 	document.getElementById("sendDiv").innerHTML = "Sent: " + messageInput.value + "<br/>";
 }
 
-function disconnect() {
+function disconnect(){
 	ble.disconnect(deviceId, onDisconnect, onError);
 }
 

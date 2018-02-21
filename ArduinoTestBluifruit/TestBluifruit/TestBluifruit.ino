@@ -9,7 +9,7 @@
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "Adafruit_BluefruitLE_UART.h"
 #include <Servo.h>
-int pos = 50;
+int pos = 0;
 Servo myservo;
 boolean PIR_on = false;
 int pirState = LOW;             // we start, assuming no motion detected
@@ -23,6 +23,7 @@ int val = 0;                    // variable for reading the pin status
 
 #define LED 2
 #define PIR 5
+#define PIRLED 6
 
 /*=========================================================================
        -----------------------------------------------------------------------*/
@@ -119,8 +120,10 @@ void setup(void)
 
   pinMode(LED, OUTPUT);
   pinMode(PIR, INPUT);
+  pinMode(PIRLED,OUTPUT);
 
   myservo.attach(3);
+  myservo.write(pos);
 }
 
 /**************************************************************************/
@@ -168,7 +171,7 @@ void loop(void)
       // Open window
       else if ((char)c == '3')
       {
-        for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
+        for (pos = 0; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
           // in steps of 1 degree
           myservo.write(pos);              // tell servo to go to position in variable 'pos'
           delay(15);
@@ -179,7 +182,7 @@ void loop(void)
       // close window
       else if ((char)c == '4')
       {
-        for (pos = 180; pos >= 50; pos -= 1) { // goes from 180 degrees to 0 degrees
+        for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
           myservo.write(pos);              // tell servo to go to position in variable 'pos'
           delay(15);
           //flush
@@ -205,9 +208,9 @@ void loop(void)
     if (PIR_on == true)
     {
       // check if the input is HIGH
-      digitalWrite(LED, HIGH);  // turn LED ON
+      digitalWrite(PIRLED, HIGH);  // turn LED ON
       delay(5000);
-      digitalWrite(LED, LOW);  // turn LED OFF
+      digitalWrite(PIRLED, LOW);  // turn LED OFF
       Serial.println("Motion ended!");
       // we have just turned on
     }
