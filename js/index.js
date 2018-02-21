@@ -57,9 +57,14 @@ function refreshDeviceList(){
 function onDiscoverDevice(device){
 	//Make a list in html and show devises
 	var listItem = document.createElement('li'),
-    html = device.name+ "," + device.id;
-    listItem.innerHTML = html;
-    document.getElementById("bleDeviceList").appendChild(listItem);
+	if (device.name == "BILL") {
+		html = device.name+ "," + device.id;
+		listItem.innerHTML = html;
+		document.getElementById("bleDeviceList").appendChild(listItem);
+	}
+    //html = device.name+ "," + device.id;
+    //listItem.innerHTML = html;
+    //document.getElementById("bleDeviceList").appendChild(listItem);
 }
 
 
@@ -129,16 +134,27 @@ function switchOff() { // send data to Arduino
 	 var data = stringToBytes("0");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
-function winOn() { // send data to Arduino
+function doorOn() { // send data to Arduino
      
 	 var data = stringToBytes("3");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
-function winOff() { // send data to Arduino
+function doorOff() { // send data to Arduino
      
 	 var data = stringToBytes("4");
 	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
 }
+function pirOn() { // send data to Arduino
+     
+	 var data = stringToBytes("5");
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
+function pirOff() { // send data to Arduino
+     
+	 var data = stringToBytes("6");
+	ble.writeWithoutResponse(ConnDeviceId, blue.serviceUUID, blue.txCharacteristic, data, onSend, onError);
+}
+
 
 
 
