@@ -187,39 +187,52 @@ void loop(void)
       }
 
       // Turn on PIR
-      else if ((char)c == '5')
+      if ((char)c == '5')
       {
         PIR_on = true;
         val = digitalRead(PIR);  // read input value
         if (val == HIGH) {            // check if the input is HIGH
           digitalWrite(LED, HIGH);  // turn LED ON
-          if (pirState == LOW) {
+          if (PIR_on == true) {
             // we have just turned on
             Serial.println("Motion detected!");
             // We only want to print on the output change, not state
             pirState = HIGH;
           }
         }
-          // Turn off PIR
-          else if ((char) c == '6')
-          {
-            PIR_on = false;
-            digitalWrite(LED, LOW); // turn LED OFF
-            if (pirState == HIGH) {
-              // we have just turned of
-              Serial.println("Motion ended!");
-              // We only want to print on the output change, not state
-              pirState = LOW;
-            }
-          }
-            if (PIR_on == true)
-            {
-
-            }
-          }
+      }
+      // Turn off PIR
+      else if ((char) c == '6')
+      {
+        Serial.print(PIR_on);
+        PIR_on = false;
+        digitalWrite(LED, LOW); // turn LED OFF
+        if (PIR_on == false) {
+          // we have just turned of
+          Serial.println("Motion ended!");
+          // We only want to print on the output change, not state
+          pirState = LOW;
         }
       }
+      if (PIR_on == true)
+
+      {
+        /*
+          while (PIR_on == true)
+          {
+
+          // we have just turned on
+          Serial.println("Motion detected!");
+          // We only want to print on the output change, not state
+          pirState = HIGH;
+        */
+      }
+    }
+
+  }
 }
+
+
 
 
 
