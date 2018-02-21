@@ -56,19 +56,11 @@ function refreshDeviceList(){
 
 function onDiscoverDevice(device){
 	//Make a list in html and show devises
-	//var string = "foo",
-    //substring = "oo";
-	//string.indexOf(substring) !== -1;
 	if (device.id == "F1:A4:8D:46:02:10") {
 		var listItem = document.createElement('li'),
 		html = device.name+ "," + device.id;
 		listItem.innerHTML = html;
 		document.getElementById("bleDeviceList").appendChild(listItem);
-	} else {
-		//var listItem = document.createElement('li'),
-		//html = device.name+ "," + device.id;
-		//listItem.innerHTML = html;
-		//document.getElementById("bleDeviceList").appendChild(listItem);
 	}
 }
 
