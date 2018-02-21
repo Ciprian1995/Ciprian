@@ -158,15 +158,7 @@ void loop(void)
       digitalWrite(LED, HIGH);
       //flush
     }
-    sweep();
-  }
-}
-
-void sweep()
-{
-  int c;
-  c = ble.read();
-  if ((char)c == '3')
+   else if ((char)c == '3')
   {
     for (pos = 50; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
       // in steps of 1 degree
@@ -184,7 +176,9 @@ void sweep()
       //flush
     }// waits 15ms for the servo to reach the position
   }
+  }
 }
+
 
 
 
