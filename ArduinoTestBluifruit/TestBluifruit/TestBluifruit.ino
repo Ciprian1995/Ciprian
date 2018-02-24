@@ -120,7 +120,7 @@ void setup(void)
 
   pinMode(LED, OUTPUT);
   pinMode(PIR, INPUT);
-  pinMode(PIRLED,OUTPUT);
+  pinMode(PIRLED, OUTPUT);
 
   myservo.attach(3);
   myservo.write(pos);
@@ -171,22 +171,22 @@ void loop(void)
       // Open window
       else if ((char)c == '3')
       {
-        for (pos = 0; pos <= 180; pos++) { // goes from 0 degrees to 180 degrees
+        for (pos = 0; pos <= 180; pos++) {
           // in steps of 1 degree
-          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+          myservo.write(pos);
           delay(15);
           //flush
-        } // waits 15ms for the servo to reach the position
+        }
 
       }
       // close window
       else if ((char)c == '4')
       {
-        for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-          myservo.write(pos);              // tell servo to go to position in variable 'pos'
+        for (pos = 180; pos >= 0; pos -= 1) {
+          myservo.write(pos);
           delay(15);
           //flush
-        }// waits 15ms for the servo to reach the position
+        }
       }
 
       // Turn on PIR
@@ -198,7 +198,7 @@ void loop(void)
       else if ((char) c == '6')
       {
         PIR_on = false;
-       
+
       }
     }
   }
